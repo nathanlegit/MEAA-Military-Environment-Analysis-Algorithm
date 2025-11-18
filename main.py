@@ -58,7 +58,7 @@ def imageModel(image_model, labels_file, image_file):
 @st.cache_data
 def openai_completion(prompt):
     response = openai.Completion.create(
-      model="text-davinci-003",
+      model="gpt-3.5-turbo-instruct",
       prompt=prompt,
       max_tokens=500,
       temperature=0.5
@@ -248,6 +248,7 @@ if selected5 == "Live-Image Capture":
 
         except IOError:
             print("Error! :(") 
+
 
 
 
