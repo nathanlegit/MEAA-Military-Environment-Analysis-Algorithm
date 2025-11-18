@@ -31,7 +31,7 @@ def imageModel(image_model, labels_file, image_file):
 
     # Load the model
     with custom_object_scope({'DepthwiseConv2D': PatchedDepthwiseConv2D}):
-    model = load_model(image_model, compile=False)
+        model = load_model(image_model, compile=False)
 
     # Load the labels
     class_names = open(labels_file, "r").readlines()
@@ -261,6 +261,7 @@ if selected5 == "Live-Image Capture":
 
         except IOError:
             print("Error! :(") 
+
 
 
 
