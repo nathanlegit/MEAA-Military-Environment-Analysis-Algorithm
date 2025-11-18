@@ -2,6 +2,16 @@ from tensorflow.keras.models import load_model  # TensorFlow is required for Ker
 from PIL import Image, ImageOps  # Install pillow instead of PIL
 import numpy as np
 
+import tensorflow as tf
+from tensorflow.keras.layers import DepthwiseConv2D as TFDepthwiseConv2D
+from tensorflow.keras.utils import custom_object_scope
+
+class PatchedDepthwiseConv2D(TFDepthwiseConv2D):
+    def __init__(self, *args, groups=1, **kwargs):
+        # Ignore the 'groups' argument (since it's 1 in your model)
+        # and call the original DepthwiseConv2D constructor
+        super().__init__(*args, **kwargs)
+
 import streamlit as st
 import pandas as pd
 from io import StringIO
@@ -20,6 +30,7 @@ def imageModel(image_model, labels_file, image_file):
     np.set_printoptions(suppress=True)
 
     # Load the model
+    with custom_object_scope({'DepthwiseConv2D': PatchedDepthwiseConv2D}):
     model = load_model(image_model, compile=False)
 
     # Load the labels
@@ -250,6 +261,7 @@ if selected5 == "Live-Image Capture":
 
         except IOError:
             print("Error! :(") 
+
 
 
 
