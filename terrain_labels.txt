@@ -1,0 +1,5 @@
+0 Coast
+1 Desert
+2 Forest
+3 Mountain
+4 Plains
