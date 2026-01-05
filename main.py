@@ -2,16 +2,6 @@ from tensorflow.keras.models import load_model  # TensorFlow is required for Ker
 from PIL import Image, ImageOps  # Install pillow instead of PIL
 import numpy as np
 
-import tensorflow as tf
-from tensorflow.keras.layers import DepthwiseConv2D as TFDepthwiseConv2D
-from tensorflow.keras.utils import custom_object_scope
-
-class PatchedDepthwiseConv2D(TFDepthwiseConv2D):
-    def __init__(self, *args, groups=1, **kwargs):
-        # Ignore the 'groups' argument (since it's 1 in your model)
-        # and call the original DepthwiseConv2D constructor
-        super().__init__(*args, **kwargs)
-
 import streamlit as st
 import pandas as pd
 from io import StringIO
@@ -25,7 +15,6 @@ openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 # Teachable Machine model.
 # Input files: model export, labels export, uploaded image.
-
 def imageModel(image_model, labels_file, image_file):
     # Disable scientific notation for clarity
     np.set_printoptions(suppress=True)
@@ -71,7 +60,7 @@ def imageModel(image_model, labels_file, image_file):
 @st.cache_data
 def openai_completion(prompt):
     response = openai.Completion.create(
-      model="gpt-3.5-turbo-instruct",
+      model="text-davinci-003",
       prompt=prompt,
       max_tokens=500,
       temperature=0.5
@@ -261,14 +250,3 @@ if selected5 == "Live-Image Capture":
 
         except IOError:
             print("Error! :(") 
-
-
-
-
-
-
-
-
-
-
-
