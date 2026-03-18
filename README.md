@@ -1,4 +1,4 @@
-Copy🪖 M.E.A.A — Military Environment Analysis Algorithm
+**M.E.A.A — Military Environment Analysis Algorithm**
 G009 | DSTA Competition Project
 
 Analyse any battlefield terrain in seconds — powered by computer vision and generative AI.
