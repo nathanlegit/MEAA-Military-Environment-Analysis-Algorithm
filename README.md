@@ -73,7 +73,7 @@ The app has four navigation modes:
 
 ### Steps
 
-
+```bash
 # Clone the repository
 git clone https://github.com/nathanlegit/MEAA-Military-Environment-Analysis-Algorithm.git
 cd MEAA-Military-Environment-Analysis-Algorithm
@@ -89,11 +89,11 @@ $env:OPENAI_API_KEY="your-api-key-here"
 
 # Run the app
 streamlit run app.py
-
+```
 
 ### Repository Structure
 
-
+```
 MEAA-Military-Environment-Analysis-Algorithm/
 │
 ├── app.py                        # Main Streamlit application
@@ -119,7 +119,7 @@ MEAA-Military-Environment-Analysis-Algorithm/
         ├── test_forest.jpg
         ├── test_snow.jpg
         └── test_rural.jpg
-
+```
 
 ---
 
